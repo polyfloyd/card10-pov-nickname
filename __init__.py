@@ -50,7 +50,7 @@ while True:
         accel_hist = accel_hist[max(len(accel_hist)-20, 0):]
         if len(accel_hist) > 2:
             direction = sign(accel_hist[-1]) - sign(accel_hist[-2])
-    colors = [(0, 0, 0), (192, 192, 192)]
+    colors = [(0, 0, 0), (0xff, 0xff, 0xff)]
     string_iter = string
     if direction > 0:
         string_iter = reversed(string_iter)
