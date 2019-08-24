@@ -17,6 +17,8 @@ with display.open() as d:
 for i in range(3):
     leds.set_rocket(i, 0)
 
+# Characters are encoded in columns per 11 bits in an integer.
+# LSB = top, MSB = bottom.
 charset = {
     'd': [0x7ff, 0x603, 0x30e, 0x18c],
     'f': [0x7ff, 0x063, 0x063, 0x063],
@@ -35,7 +37,7 @@ except:
     pass
 
 string = []
-for c in nick:
+for c in nick.lower():
     if not c in charset:
         c = '_'
     string = string + charset[c] + [0]
