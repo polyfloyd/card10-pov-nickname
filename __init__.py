@@ -27,8 +27,17 @@ charset = {
     '_': [0x400] * 4,
 }
 
+nick = 'sample text'
+try:
+    with open('/nickname.txt', 'r') as f:
+        nick = str(f.read())
+except:
+    pass
+
 string = []
-for c in 'polyfloyd':
+for c in nick:
+    if not c in charset:
+        c = '_'
     string = string + charset[c] + [0]
 
 while True:
@@ -41,7 +50,6 @@ while True:
         accel_hist = accel_hist[max(len(accel_hist)-20, 0):]
         if len(accel_hist) > 2:
             direction = sign(accel_hist[-1]) - sign(accel_hist[-2])
-    
     colors = [(0, 0, 0), (192, 192, 192)]
     string_iter = string
     if direction > 0:
